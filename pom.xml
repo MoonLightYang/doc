@@ -105,5 +105,12 @@
 			<organization>MoonLightYang</organization>
 		</developer>
 	</developers>
-
+	
+	<distributionManagement>  
+        <repository>  
+            <id>sonatype-nexus-snapshots</id>  
+            <name>Nexus Snapshot Repository</name>
+			<url>https://oss.sonatype.org/#welcome</url>  
+        </repository>  
+    </distributionManagement>  
 </project>
