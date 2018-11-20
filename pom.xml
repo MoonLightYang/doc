@@ -93,9 +93,9 @@
 
 	<scm>
 		<tag>master</tag>
-		<url>https://github.com/MoonLightYang/doc.git</url>
-		<connection>scm:git:https://github.com/MoonLightYang/doc.git</connection>
-		<developerConnection>scm:git:https://github.com/MoonLightYang/doc.git</developerConnection>
+		<url>https://github.com/MoonLightYang/doc</url>
+		<connection>https://github.com/MoonLightYang/doc.git</connection>
+		<developerConnection>https://github.com/MoonLightYang/doc</developerConnection>
 	</scm>
 
 	<developers>
