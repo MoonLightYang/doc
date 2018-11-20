@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class RestfulDemoApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TestDocApp.class, args);
+		SpringApplication.run(RestfulDemoApp.class, args);
 	}
 
 }
