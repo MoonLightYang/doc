@@ -1,0 +1,125 @@
+
+// 菜单栏背景的颜色。
+@menu-color: white;
+
+// 分隔线的颜色：
+@split-color: rgba(0,0,0,.07);
+
+html {
+  overflow: hidden;
+}
+
+.doc-app {
+  width: 99.52%;
+  margin: 0px;
+  padding: 0px;
+}
+
+.doc-top {
+  width: 100%;
+  height: 2.8rem;
+  border-bottom: 1px solid rgba(0,0,0,.07);
+}
+
+.doc-icon {
+  float: left;
+  position: relative;
+  text-align: center;
+  margin-left: 2rem;
+  background-position: center center;
+}
+
+.doc-icon-img {
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+}
+
+.doc-title {
+  float: left;
+  position: relative;
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 2rem;
+  height: 2rem;
+  margin-left: 0.5rem;
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+.doc-body, .doc-left, .doc-middle {
+}
+
+.doc-body {
+  width: 65%;
+  position: absolute;
+  top: 5rem;
+  bottom: 0px;
+  left: 0px;
+  margin-top: 0rem;
+}
+
+.doc-left {
+  width: 20%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  float: left;
+  position: relative;
+  display: block;
+  background-color: @menu-color;
+}
+
+#doc-menus {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.doc-content {
+  width: 79%;
+  height: 100%;
+  float: left;
+  overflow: hidden;
+  border-left: 1px solid @split-color;
+}
+
+.doc-frame {
+  width: 100%;
+  height: 100%;
+}
+
+.doc-end {
+  clear: both;
+  display: none;
+}
+
+//////////////////////  重新定义菜单栏的颜色 ////////////////////
+
+.el-menu {
+  background-color: @menu-color;
+}
+
+.el-submenu .el-menu {
+  background-color: @menu-color;
+}
+
+//////////////////////////////   自定义滚动条样式  /////////////////
+::-webkit-scrollbar { /* 整个滚条背景 */
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb { // 滚动条滑块（是主要部分）
+  background-color: #c2c2c2; /* 滚条内嵌颜色 */
+  background-clip: padding-box;
+  min-height: 3rem;
+}
+
+::-webkit-scrollbar-track { //  外层轨道。
+  background-color: #FFF;
+}
+
+::-webkit-scrollbar-button { // 不要两端的按钮。
+  display: none;
+}
