@@ -110,7 +110,10 @@
         <repository>  
             <id>sonatype-nexus-snapshots</id>  
             <name>Nexus Snapshot Repository</name>
-			<url>https://oss.sonatype.org/#welcome</url>  
-        </repository>  
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>  
+        </repository>
+        <!-- 
+        	https://oss.sonatype.org/service/local/staging/deploy/maven2
+         -->
     </distributionManagement>  
 </project>
