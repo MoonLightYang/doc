@@ -1,13 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
-
 	<groupId>org.api</groupId>
 	<artifactId>org-api-doc</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
+	<name>doc</name>
+	<description>a springboot project restful doc api util</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -16,7 +16,6 @@
 	</parent>
 
 	<dependencies>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
@@ -83,8 +82,38 @@
 			</testResource>
 		</testResources>
 	</build>
-	<!-- <distributionManagement> <repository> <id>nexus-snapshots</id> <name>Nexus 
-		Snapshot Repository</name> <url>http://192.168.10.40:8081/nexus/content/repositories/snapshots/</url> 
-		</repository> </distributionManagement> -->
 
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<scm>
+		<tag>master</tag>
+		<url>https://github.com/MoonLightYang/doc</url>
+		<connection>https://github.com/MoonLightYang/doc.git</connection>
+		<developerConnection>https://github.com/MoonLightYang/doc</developerConnection>
+	</scm>
+
+	<developers>
+		<developer>
+			<name>MoonLightYang</name>
+			<email>729355767@qq.com</email>
+			<organization>MoonLightYang</organization>
+		</developer>
+	</developers>
+	
+	<distributionManagement>  
+        <repository>  
+            <id>sonatype-nexus-snapshots</id>  
+            <name>Nexus Snapshot Repository</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>  
+        </repository>
+        <!-- 
+        	https://oss.sonatype.org/service/local/staging/deploy/maven2
+         -->
+    </distributionManagement>  
 </project>
