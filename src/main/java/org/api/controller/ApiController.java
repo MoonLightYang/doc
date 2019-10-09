@@ -2,8 +2,8 @@ package org.api.controller;
 
 import java.util.List;
 
-import org.api.doc.MappingCache;
-import org.api.doc.bean.ApiDoc;
+import org.api.doc.CacheMapping;
+import org.api.doc.bean.ApiDetail;
 import org.api.doc.bean.ApiMenu;
 import org.api.parse.DocPageBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class ApiController {
 	@GetMapping(value = "{parent}/{child}.html")
 	public String doc(@PathVariable("parent") String pid, @PathVariable("child") String id, Model model)
 			throws Exception {
-		ApiDoc ab = MappingCache.modMapping.get(pid + "-" + id);
+		ApiDetail ab = CacheMapping.detailCache.get(pid + "-" + id);
 		model.addAttribute("title", title);
 		model.addAttribute("v", "789");
 		model.addAttribute("api", ab);
@@ -46,14 +46,14 @@ public class ApiController {
 
 	@GetMapping(value = "index.html")
 	public String index(Model model) {
-		model.addAttribute("icon", "logo-210-210.svg");
-		model.addAttribute("title", "耶够 - 医脉相承API接口文档");
+		model.addAttribute("icon", "/logo-210-210.svg");
+		model.addAttribute("title", "创业版 - API文档");
 		model.addAttribute("docPath", "");
 		model.addAttribute("v", "123");
 		model.addAttribute("p", "");
 		model.addAttribute("welcome", "content.html");
 
-		List<ApiMenu> menus = MappingCache.menus;
+		List<ApiMenu> menus = CacheMapping.menusCache;
 		model.addAttribute("menus", menus);
 		return "restful/home";
 	}

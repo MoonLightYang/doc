@@ -3,17 +3,23 @@ package org.api.doc.bean;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ApiDoc {
-
+public class ApiDetail {
+	
 	private String url; // 请求uri
 	private String describle; // 接口描述
 	private String way; // 请求方式
 	private List<ApiParamList> params = new ArrayList<>(); // 请求参数
 	private List<ApiResultList> results = new ArrayList<>(); // 响应结果
 
-	public ApiDoc() {
+	public ApiDetail() {
 	}
 
+	public ApiDetail(String url, String way, String describle) {
+		this.url = url;
+		this.way = way;
+		this.describle = describle;
+	}
+	
 	public String getUrl() {
 		return url;
 	}

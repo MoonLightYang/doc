@@ -12,6 +12,12 @@ public class ApiMenu {
 	public ApiMenu() {
 	}
 
+	public ApiMenu(String pid, String id, String describle) {
+		this.pid = pid;
+		this.id = id;
+		this.describle = describle;
+	}
+	
 	public ApiMenu(String id, String describle) {
 		this.id = id;
 		this.describle = describle;

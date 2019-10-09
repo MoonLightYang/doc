@@ -7,7 +7,7 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
-import org.api.doc.bean.ApiDoc;
+import org.api.doc.bean.ApiDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -78,7 +78,7 @@ public class DocPageBuilder {
 		return html;
 	}
 
-	public String doc2Md(ApiDoc apiBean) {
+	public String doc2Md(ApiDetail apiBean) {
 		try {
 			Map<String, Object> model = new HashMap<String, Object>();
 			model.put("api", apiBean);

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.api.doc.annotation.DocField;
-import org.api.doc.bean.ApiDoc;
+import org.api.doc.bean.ApiDetail;
 import org.api.doc.bean.ApiField;
 import org.api.doc.bean.ApiParam;
 import org.api.doc.bean.ApiParamList;
@@ -55,8 +55,8 @@ public class TestDoc {
 		ParseObjectService test = new ParseObjectService();
 
 		// 1：一条记录标识一个方法的所有信息
-		List<ApiDoc> docs = new ArrayList<ApiDoc>();
-		ApiDoc doc = new ApiDoc();
+		List<ApiDetail> docs = new ArrayList<ApiDetail>();
+		ApiDetail doc = new ApiDetail();
 
 		Class<TestDoc> clazz = TestDoc.class;
 		Method[] methods = clazz.getMethods();
@@ -102,8 +102,8 @@ public class TestDoc {
 	}
 
 	// ========== 输出响应结果 ======================
-	public void printDoc(List<ApiDoc> docs) {
-		for (ApiDoc doc : docs) {
+	public void printDoc(List<ApiDetail> docs) {
+		for (ApiDetail doc : docs) {
 			System.out.println("请求URI：" + doc.getUrl());
 			System.out.println("请求方式：" + doc.getWay());
 			System.out.println("接口描述：" + doc.getDescrible());

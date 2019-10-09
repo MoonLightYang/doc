@@ -1,13 +1,14 @@
 package org.api.doc.service;
 
 import java.lang.annotation.Annotation;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 
-import org.api.ParseMethodService;
+import org.api.ClassParseService;
 import org.api.ParseObjectService;
 import org.api.controller.ApiController;
-import org.api.doc.MappingCache;
+import org.api.doc.CacheMapping;
 import org.api.doc.bean.ApiMenu;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -16,7 +17,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RestController;
 
-@ComponentScan(basePackageClasses = { ApiController.class, ParseMethodService.class, ParseObjectService.class })
+@ComponentScan(basePackageClasses = { ApiController.class, ClassParseService.class, ParseObjectService.class })
 @Configuration
 public class EnableDocConfiguration implements ApplicationContextAware {
 
@@ -25,11 +26,17 @@ public class EnableDocConfiguration implements ApplicationContextAware {
 	@PostConstruct
 	public void tet() {
 		String[] array = this.controllers(RestController.class);
-		ParseMethodService sc = new ParseMethodService();
+		ClassParseService classParse = new ClassParseService();
+		ParseObjectService objectParse = new ParseObjectService();
 		for (String arr : array) {
-			Class<?> clazz = applicationContext.getBean(arr).getClass();
-			ApiMenu menu = sc.parseController(clazz);
-			MappingCache.menus.add(menu);
+			Class<?> controllerClazz = applicationContext.getBean(arr).getClass();
+			
+			ApiMenu menu = classParse.parseController(controllerClazz);
+			
+			List<ApiMenu> childs = classParse.parseMethod(objectParse, controllerClazz, menu);
+			menu.setChilds(childs);
+			
+			CacheMapping.menusCache.add(menu);
 		}
 	}
 
