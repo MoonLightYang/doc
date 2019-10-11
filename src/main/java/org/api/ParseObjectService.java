@@ -12,12 +12,13 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import org.api.doc.annotation.DocField;
-import org.api.doc.annotation.DocIgnoreField;
 import org.api.doc.bean.ApiParam;
 import org.api.doc.bean.ApiParamList;
 import org.api.doc.bean.ApiResult;
 import org.api.doc.bean.ApiResultList;
+
+import com.saas.framework.annotation.DocField;
+import com.saas.framework.annotation.DocIgnoreField;
 
 
 public class ParseObjectService {

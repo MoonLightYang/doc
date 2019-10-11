@@ -2,8 +2,8 @@ package org.api.param;
 
 import javax.validation.constraints.NotEmpty;
 
-import org.api.doc.annotation.DocField;
-import org.api.doc.annotation.DocIgnoreField;
+import com.saas.framework.annotation.DocField;
+import com.saas.framework.annotation.DocIgnoreField;
 
 public class Person {
 

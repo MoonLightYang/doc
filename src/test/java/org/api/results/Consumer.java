@@ -1,6 +1,6 @@
 package org.api.results;
 
-import org.api.doc.annotation.DocField;
+import com.saas.framework.annotation.DocField;
 
 public class Consumer {
 

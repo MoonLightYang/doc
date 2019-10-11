@@ -1,14 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	
+
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.api</groupId>
-	<artifactId>org-api-doc</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<groupId>com.framework</groupId>
+	<artifactId>framework-doc</artifactId>
+	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
-	<name>doc</name>
+	<name>framework-doc</name>
 	<description>a springboot project restful doc api util</description>
 
 	<parent>
@@ -23,6 +23,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -52,6 +53,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-freemarker</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.framework</groupId>
+			<artifactId>framework-common</artifactId>
+			<version>0.0.1</version>
 		</dependency>
 	</dependencies>
 

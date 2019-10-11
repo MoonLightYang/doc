@@ -6,7 +6,6 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.api.doc.annotation.DocField;
 import org.api.doc.bean.ApiDetail;
 import org.api.doc.bean.ApiField;
 import org.api.doc.bean.ApiParam;
@@ -15,6 +14,8 @@ import org.api.param.Child;
 import org.api.param.Person;
 import org.api.results.Result;
 import org.springframework.util.StringUtils;
+
+import com.saas.framework.annotation.DocField;
 
 public class TestDoc {
 	// ============
