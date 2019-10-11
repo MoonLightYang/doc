@@ -8,6 +8,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.api.doc.annotation.DocField;
@@ -16,8 +18,7 @@ import org.api.doc.bean.ApiParam;
 import org.api.doc.bean.ApiParamList;
 import org.api.doc.bean.ApiResult;
 import org.api.doc.bean.ApiResultList;
-import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
+
 
 public class ParseObjectService {
 
@@ -278,7 +279,7 @@ public class ParseObjectService {
 		}
 
 		NotNull anNn = field.getAnnotation(NotNull.class);
-		NotEmpty anNe = field.getAnnotation(NotEmpty.class);
+		NotEmpty anNe = field.getAnnotation(javax.validation.constraints.NotEmpty.class);
 		NotBlank anNb = field.getAnnotation(NotBlank.class);
 		// 必填判定
 		if (anNn != null || anNe != null || anNb != null)

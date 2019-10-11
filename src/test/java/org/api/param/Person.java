@@ -1,12 +1,13 @@
 package org.api.param;
 
+import javax.validation.constraints.NotEmpty;
+
 import org.api.doc.annotation.DocField;
 import org.api.doc.annotation.DocIgnoreField;
-import org.hibernate.validator.constraints.NotBlank;
 
 public class Person {
 
-	@NotBlank
+	@NotEmpty
 	@DocField(name = "用户地址", range = "10个字符", sample = "123", remark = "当前居住的地址")
 	public String address;
 	@DocField(name = "年龄", range = "0 - 150", sample = "18", remark = "当前年龄")
