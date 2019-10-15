@@ -18,7 +18,7 @@ import org.api.doc.bean.ApiResult;
 import org.api.doc.bean.ApiResultList;
 
 import com.saas.framework.annotation.DocField;
-import com.saas.framework.annotation.DocIgnoreField;
+import com.saas.framework.annotation.DocIgnore;
 
 
 public class ParseObjectService {
@@ -128,7 +128,7 @@ public class ParseObjectService {
 			List<ApiResult> ars) {
 		// 解析每个字段
 		for (Field field : fields) {
-			DocIgnoreField dif = field.getAnnotation(DocIgnoreField.class);
+			DocIgnore dif = field.getAnnotation(DocIgnore.class);
 			if (dif != null)
 				continue;
 
@@ -208,7 +208,7 @@ public class ParseObjectService {
 		// 获取参数所有字段, 解析每个字段
 		Field[] fields = paramClazz.getDeclaredFields();
 		for (Field field : fields) {
-			DocIgnoreField dif = field.getAnnotation(DocIgnoreField.class);
+			DocIgnore dif = field.getAnnotation(DocIgnore.class);
 			if (dif != null)
 				continue;
 

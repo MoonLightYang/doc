@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.saas.framework.annotation.DocMethod;
+
 public class ClassParseService {
 
 	/**
@@ -47,19 +49,23 @@ public class ClassParseService {
 			// 1：设置方法信息
 			ApiDetail doc = this.setMetnodInfo(pid, controllerMethod);
 
-			// 2: 解析请求参数
-			List<ApiParamList> apls = this.parseMethodParams(objectParse, controllerMethod);
-			doc.setParams(apls);
+			// 2：解析参数
+//			DocMethod docMethod = controllerMethod.getAnnotation(DocMethod.class);
+//			if (docMethod != null) {
+				// 入参
+				List<ApiParamList> apls = this.parseMethodParams(objectParse, controllerMethod);
+				doc.setParams(apls);
 
-			// 3: 解析返回参数
-			List<ApiResultList> arls = this.parseMethodResults(objectParse, controllerMethod);
-			doc.setResults(arls);
+				// 出参
+				List<ApiResultList> arls = this.parseMethodResults(objectParse, controllerMethod);
+				doc.setResults(arls);
+//			}
 
+			// 3：添加到二级菜单集合
 			String[] cacheMapping = doc.getUrl().split("/");
-			// 4：添加到二级菜单集合
 			childs.add(new ApiMenu(cacheMapping[0], cacheMapping[1], doc.getDescrible()));
 
-			// 5：缓存菜单详情
+			// 4：缓存菜单详情
 			CacheMapping.detailCache.put(cacheMapping[0] + "-" + cacheMapping[1], doc);
 		}
 		return childs;
@@ -74,6 +80,7 @@ public class ClassParseService {
 	 * @return
 	 */
 	private ApiDetail setMetnodInfo(String controllerMapping, Method method) {
+		// 1: request method
 		String requestMethod = "", describle = "", methodMapping = "";
 		GetMapping cm = method.getAnnotation(GetMapping.class);
 		PostMapping pm = method.getAnnotation(PostMapping.class);
@@ -89,6 +96,20 @@ public class ClassParseService {
 		String url = controllerMapping + "/" + methodMapping;
 		return new ApiDetail(url, requestMethod, describle);
 	}
+//
+//	private List<ApiParamList> parseMethodParams(ParseObjectService objectParse, Class<?> paramClass) {
+//		List<ApiParamList> apls = new ArrayList<>();// 申明方法参数列表
+//		Type[] types = paramClass.getTypeParameters();
+//		objectParse.parseParams(types[0], apls, true, false, null, null);
+//		return apls;
+//	}
+//
+//	private List<ApiResultList> parseMethodResults(ParseObjectService objectParse, Class<?> resultClass) {
+//		List<ApiResultList> arls = new ArrayList<>();// 申明方法参数列表
+//		Type type = resultClass.getTypeParameters()[0];
+//		objectParse.parseResults(type, arls, true, false, null, null);
+//		return arls;
+//	}
 
 	private List<ApiParamList> parseMethodParams(ParseObjectService objectParse, Method method) {
 		List<ApiParamList> apls = new ArrayList<>();// 申明方法参数列表

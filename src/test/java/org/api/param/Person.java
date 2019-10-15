@@ -3,7 +3,7 @@ package org.api.param;
 import javax.validation.constraints.NotEmpty;
 
 import com.saas.framework.annotation.DocField;
-import com.saas.framework.annotation.DocIgnoreField;
+import com.saas.framework.annotation.DocIgnore;
 
 public class Person {
 
@@ -14,7 +14,7 @@ public class Person {
 	public int age;
 	@DocField(name = "用户生日", sample = "1991-04-12", remark = "生日日期")
 	public Integer brith;
-	@DocIgnoreField
+	@DocIgnore
 	public Integer createDate;
 
 	public Person() {
