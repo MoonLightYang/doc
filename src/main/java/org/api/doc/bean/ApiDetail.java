@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ApiDetail {
-	
+
 	private String url; // 请求uri
 	private String describle; // 接口描述
 	private String way; // 请求方式
-	private List<ApiParamList> params = new ArrayList<>(); // 请求参数
-	private List<ApiResultList> results = new ArrayList<>(); // 响应结果
+	private List<ApiDoc> params = new ArrayList<>(); // 请求参数
+	private List<ApiDoc> results = new ArrayList<>(); // 响应结果
 
 	public ApiDetail() {
 	}
@@ -19,7 +19,7 @@ public class ApiDetail {
 		this.way = way;
 		this.describle = describle;
 	}
-	
+
 	public String getUrl() {
 		return url;
 	}
@@ -44,19 +44,19 @@ public class ApiDetail {
 		this.way = way;
 	}
 
-	public List<ApiParamList> getParams() {
+	public List<ApiDoc> getParams() {
 		return params;
 	}
 
-	public void setParams(List<ApiParamList> params) {
+	public void setParams(List<ApiDoc> params) {
 		this.params = params;
 	}
 
-	public List<ApiResultList> getResults() {
+	public List<ApiDoc> getResults() {
 		return results;
 	}
 
-	public void setResults(List<ApiResultList> results) {
+	public void setResults(List<ApiDoc> results) {
 		this.results = results;
 	}
 

@@ -31,11 +31,13 @@ public class DocPageBuilder {
 	// LoggerFactory.getLogger(DocPageBuilder.class);
 
 	private static final String FILE_DOC_MD = "doc.md.ftl";
+	private static final String FILE_HOME_MD = "home.md.ftl";
 
 	@Autowired
 	private ClasspathFreeMarker freeMarker;
 
 	private Template mdTemplate = null;
+	private Template homeTemplate = null;
 
 	private Parser parser = null;
 
@@ -45,6 +47,7 @@ public class DocPageBuilder {
 	public void init() {
 		try {
 			mdTemplate = freeMarker.getTemplate(DocPageBuilder.class, FILE_DOC_MD);
+			homeTemplate = freeMarker.getTemplate(DocPageBuilder.class, FILE_HOME_MD);
 			MutableDataSet options = new MutableDataSet();
 			options.setFrom(ParserEmulationProfile.GITHUB_DOC);
 			options.set(Parser.EXTENSIONS, Arrays.asList(TablesExtension.create(), SpecExampleExtension.create()));
@@ -87,6 +90,19 @@ public class DocPageBuilder {
 		} catch (IOException | TemplateException e) {
 			throw new RuntimeException(e);
 		}
+	}
+	
+	
+	public String docHome() {
+		String content = null;
+		try {
+			content = freeMarker.build(homeTemplate, new HashMap<String, Object>());
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (TemplateException e) {
+			e.printStackTrace();
+		}
+		return content;
 	}
 
 	public String loadMdFromResource(String path) throws Exception {

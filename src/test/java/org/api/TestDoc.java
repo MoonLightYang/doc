@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.api.doc.bean.ApiDetail;
-import org.api.doc.bean.ApiField;
-import org.api.doc.bean.ApiParam;
-import org.api.doc.bean.ApiParamList;
+import org.api.doc.bean.ParamField;
+import org.api.doc.bean.ApiFieldDoc;
+import org.api.doc.bean.ApiFieldDoc;
 import org.api.param.Child;
 import org.api.param.Person;
 import org.api.results.Result;
@@ -87,11 +87,11 @@ public class TestDoc {
 	 * @param clazz
 	 * @return
 	 */
-	private List<ApiField> parseParam(Class<?> clazz) {
+	private List<ParamField> parseParam(Class<?> clazz) {
 		Field[] fields = clazz.getDeclaredFields();
-		List<ApiField> docFields = new ArrayList<>();
+		List<ParamField> docFields = new ArrayList<>();
 		for (Field field : fields) {
-			ApiField api = new ApiField(field.getName(), field.getType().toString());
+			ParamField api = new ParamField(field.getName(), field.getType().toString());
 			DocField df = field.getAnnotation(DocField.class);
 			if (df != null) {
 				api.setName(df.name());
@@ -119,8 +119,8 @@ public class TestDoc {
 					else
 						System.out.println("参数类型：" + apl.getType()); // 参数列表
 
-					List<ApiParam> aps = apl.getParams();
-					for (ApiParam ap : aps) {
+					List<ApiFieldDoc> aps = apl.getParams();
+					for (ApiFieldDoc ap : aps) {
 						System.out.println("字段：" + ap.getField() + ", 名称：" + ap.getName() + ", 长度：" + ap.getRange()
 								+ ", 类型：" + ap.getType() + ", 锚点：" + ap.getIsAnchors() + ", 备注：" + ap.getRemark()
 								+ ", 必填：" + ap.getRequire());

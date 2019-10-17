@@ -37,10 +37,12 @@ public class ApiController {
 	}
 
 	@GetMapping(value = "content.html")
-	public String content(Model model, String id) {
+	public String content(Model model, String id) throws Exception {
 		model.addAttribute("title", title);
-		model.addAttribute("content", "欢迎使用API文档生成器");
 		model.addAttribute("v", "456");
+		String md = builder.docHome();
+		String html = builder.md2Html(md);
+		model.addAttribute("content", html);
 		return "restful/doc";
 	}
 

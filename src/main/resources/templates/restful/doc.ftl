@@ -24,6 +24,7 @@
     </style>
     <script type="text/javascript"> hljs.initHighlightingOnLoad(); 
     	function highLight(id){
+    		$(".check_high_light").removeClass("check_high_light");
 			$("#"+id).addClass("check_high_light");
 		}
 	</script>

@@ -57,7 +57,7 @@
         <div class="doc-split"></div>
 
         <!-- 页面内容区域 -->
-        <div class="doc-content">
+        <div class="doc-content" style="background-color:#eff2f8;">
             <iframe id="doc-frame-id" name="doc-frame-name" class="doc-frame" scrolling="yes" frameborder="0" seamless="seamless" src="${welcome}"></iframe>
         </div>
 		<div class="doc-end"></div>
