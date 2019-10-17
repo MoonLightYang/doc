@@ -8,9 +8,9 @@ import com.saas.framework.annotation.DocIgnore;
 public class Person {
 
 	@NotEmpty
-	@DocField(name = "用户地址", range = "10个字符", sample = "123", remark = "当前居住的地址")
+	@DocField(name = "用户地址", sample = "123", remark = "当前居住的地址")
 	public String address;
-	@DocField(name = "年龄", range = "0 - 150", sample = "18", remark = "当前年龄")
+	@DocField(name = "年龄", sample = "18", remark = "当前年龄")
 	public int age;
 	@DocField(name = "用户生日", sample = "1991-04-12", remark = "生日日期")
 	public Integer brith;
