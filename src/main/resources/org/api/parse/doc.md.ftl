@@ -63,14 +63,14 @@
 返回信息 ：
 ```
 <div class="result">
-<#list api.params as entity>
+<#list api.results as entity>
 <#if entity_index == 0> <p><span>【出参对象】<#else> <span id="rest_${entity.key}">【内部对象】 - ${entity.name}</#if>
 
 
-|   序号      |   字段      |   类型       |  必填           |   含义      |  备注          |
-| ------ | ------ | ------ | ------  | ------ |  ------  |
+|   序号      |   字段      |   类型       |   含义      |  备注          |
+| ------ | ------ | ------ | ------ |  ------  |
 <#list entity.docs as fields>
-| ${fields_index + 1} | <#if fields.isAnchors == 1><a href="#rest_${fields.field}${fields_index + 1}" onclick="highLight('rest_${fields.field}${fields_index + 1}')">${fields.field}</a><#else>${fields.field}</#if> | ${fields.type} | <font <#if fields.require == 'Y'>color="red"</#if>>${fields.require} </font>| ${fields.name} | ${fields.remark} |
+| ${fields_index + 1} | <#if fields.isAnchors == 1><a href="#rest_${fields.field}${fields_index + 1}" onclick="highLight('rest_${fields.field}${fields_index + 1}')">${fields.field}</a><#else>${fields.field}</#if> | ${fields.type} | ${fields.name} | ${fields.remark} |
 </#list>
 </#list>
 

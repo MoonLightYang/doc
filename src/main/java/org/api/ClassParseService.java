@@ -4,6 +4,8 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.Null;
+
 import org.api.doc.CacheMapping;
 import org.api.doc.bean.ApiDetail;
 import org.api.doc.bean.ApiDoc;
@@ -41,8 +43,10 @@ public class ClassParseService {
 	public List<ApiMenu> parseMethod(ParseObjectService objectParse, Class<?> controllerClazz, ApiMenu menu) {
 		List<ApiMenu> childs = new ArrayList<>();// 子菜单
 		String pid = menu.getId();
+		Class<?> nullClazz = Null.class;
 
 		Method[] controllerMethods = controllerClazz.getDeclaredMethods();
+
 		for (Method controllerMethod : controllerMethods) {
 			// 1：设置方法信息
 			ApiDetail doc = this.setMetnodInfo(pid, controllerMethod);
@@ -51,14 +55,20 @@ public class ClassParseService {
 			DocMethod docMethod = controllerMethod.getAnnotation(DocMethod.class);
 			if (docMethod != null) {
 				// 入参
-				List<ApiDoc> params = new ArrayList<>();
-				objectParse.parseField("0", "", docMethod.param(), params);
-				doc.setParams(params);
+				Class<?> paramClazz = docMethod.param();
+				if (paramClazz != nullClazz && !paramClazz.equals(nullClazz)) {
+					List<ApiDoc> params = new ArrayList<>();
+					objectParse.parseField("0", "", paramClazz, params);
+					doc.setParams(params);
+				}
 
 				// 出参
-				List<ApiDoc> results = new ArrayList<>();
-				objectParse.parseField("0", "", docMethod.result(), results);
-				doc.setResults(results);
+				Class<?> resultClazz = docMethod.result();
+				if (resultClazz != nullClazz && !paramClazz.equals(resultClazz)) {
+					List<ApiDoc> results = new ArrayList<>();
+					objectParse.parseField("0", "", resultClazz, results);
+					doc.setResults(results);
+				}
 			}
 
 			// 3：添加到二级菜单集合

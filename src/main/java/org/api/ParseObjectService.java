@@ -79,7 +79,11 @@ public class ParseObjectService {
 				apiParam.setType("List");
 				apiParam.setIsAnchors(1);
 				Class<?> genClazz = this.getGenClass(field);
-				this.parseField(field.getName() + (i + 1), field.getName(), genClazz, results);
+				if(paramClazz == genClazz || paramClazz.equals(genClazz)){
+					
+				}else {
+					this.parseField(field.getName() + (i + 1), field.getName(), genClazz, results);
+				}
 			} else if (!Collection.class.isAssignableFrom(typeClazz)) {
 				apiParam.setType(typeName);
 				apiParam.setIsAnchors(1);
