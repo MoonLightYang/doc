@@ -49,7 +49,8 @@ public class ParseObjectService {
 		ApiDoc apiDoc = new ApiDoc(keyPrex, fieldName,params);
 		results.add(apiDoc);
 
-		Field[] fields = paramClazz.getFields();
+		Field[] fields = paramClazz.getDeclaredFields();
+//		Field[] fields = paramClazz.getFields();
 		if (fields == null)
 			return;
 
