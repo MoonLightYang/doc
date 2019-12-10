@@ -53,23 +53,25 @@ public class ClassParseService {
 
 			// 2：解析参数
 			DocMethod docMethod = controllerMethod.getAnnotation(DocMethod.class);
-			if (docMethod != null) {
-				// 入参
-				Class<?> paramClazz = docMethod.param();
-				if (paramClazz != nullClazz && !paramClazz.equals(nullClazz)) {
-					List<ApiDoc> params = new ArrayList<>();
-					objectParse.parseField("0", "", paramClazz, params);
-					doc.setParams(params);
-				}
-
-				// 出参
-				Class<?> resultClazz = docMethod.result();
-				if (resultClazz != nullClazz && !paramClazz.equals(resultClazz)) {
-					List<ApiDoc> results = new ArrayList<>();
-					objectParse.parseField("0", "", resultClazz, results);
-					doc.setResults(results);
-				}
+			if (docMethod == null) {
+				continue;
+			} 
+			// 入参
+			Class<?> paramClazz = docMethod.param();
+			if (paramClazz != nullClazz && !paramClazz.equals(nullClazz)) {
+				List<ApiDoc> params = new ArrayList<>();
+				objectParse.parseField("0", "", paramClazz, params);
+				doc.setParams(params);
 			}
+
+			// 出参
+			Class<?> resultClazz = docMethod.result();
+			if (resultClazz != nullClazz && !paramClazz.equals(resultClazz)) {
+				List<ApiDoc> results = new ArrayList<>();
+				objectParse.parseField("0", "", resultClazz, results);
+				doc.setResults(results);
+			}
+			
 
 			// 3：添加到二级菜单集合
 			String[] cacheMapping = doc.getUrl().split("/");
