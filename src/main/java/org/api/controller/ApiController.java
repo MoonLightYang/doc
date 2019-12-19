@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping(value = "api")
@@ -45,9 +46,9 @@ public class ApiController {
 		model.addAttribute("content", html);
 		return "restful/doc";
 	}
-
+	
 	@GetMapping(value = "index.html")
-	public String index(Model model) {
+	public String index(Model model) throws Exception{
 		model.addAttribute("icon", "/logo-210-210.svg");
 		model.addAttribute("title", "创业版 - API文档");
 		model.addAttribute("docPath", "");
